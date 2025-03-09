@@ -4,7 +4,13 @@ let cols = 16;
 const container = document.getElementById('container');
 
 const colorCell = e => {
-    e.target.style.backgroundColor = '#000';
+    const rColor = Math.floor(Math.random() * 256);
+    const gColor = Math.floor(Math.random() * 256);
+    const bColor = Math.floor(Math.random() * 256);
+
+    const colorString = 'rgb(' + rColor + ', '+ gColor + ', ' + bColor + ')';
+
+    e.target.style.backgroundColor = colorString;
     //if (e.target.style.backgroundColor === '#fff') {
     //    e.target.style.backgroundColor = '#000';
     //}
