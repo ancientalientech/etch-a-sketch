@@ -4,20 +4,25 @@ let cols = 16;
 const container = document.getElementById('container');
 
 const colorCell = e => {
-    const rColor = Math.floor(Math.random() * 256);
-    const gColor = Math.floor(Math.random() * 256);
-    const bColor = Math.floor(Math.random() * 256);
+    if (e.target.classList.contains('painted')) {
+        if (e.target.style.opacity < 1) {
+            e.target.style.opacity = parseFloat(e.target.style.opacity) + 0.1;
+        }
+    } else {
+        e.target.classList.add('painted');
+    
+        const rColor = Math.floor(Math.random() * 256);
+        const gColor = Math.floor(Math.random() * 256);
+        const bColor = Math.floor(Math.random() * 256);
 
-    const colorString = 'rgb(' + rColor + ', '+ gColor + ', ' + bColor + ')';
+        const colorString = 'rgb(' + rColor + ', '+ gColor + ', ' + bColor + ')';
 
-    e.target.style.backgroundColor = colorString;
-    //if (e.target.style.backgroundColor === '#fff') {
-    //    e.target.style.backgroundColor = '#000';
-    //}
+        e.target.style.opacity = 0.1;
+        e.target.style.backgroundColor = colorString;
+    }
 }
 
 const buildCanvas = (rows, cols) => {
-    console.log(rows, cols);
     for (let i = 0; i < rows; i++) {
         let row = document.createElement('div');
         row.classList.add('row');
